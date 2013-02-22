@@ -39,11 +39,10 @@ syntax region  javaScriptComment        start="/\*"  end="\*/" contains=javaScri
 if !exists("javascript_ignore_javaScriptdoc")
   syntax case ignore
 
-  "" syntax coloring for javadoc comments (HTML)
-  "syntax include @javaHtml <sfile>:p:h/html.vim
-  "unlet b:current_syntax
-
-  syntax cluster javaScriptDocObjects contains=javaScriptType,javaScriptExceptionObjects,javaScriptDomObjects,javaScriptGlobalObjects
+  syntax keyword javaScriptDocPredefinedObjects contained string number boolean
+  syntax keyword javaScriptDocPredefinedObjects contained Error EvalError RangeError ReferenceError SyntaxError TypeError URIError
+  syntax keyword javaScriptDocPredefinedObjects contained Array Boolean Date Function Infinity JavaArray JavaClass JavaObject JavaPackage Math Number NaN Object Packages RegExp String Undefined java netscape sun
+  syntax keyword javaScriptDocPredefinedObjects contained DOMImplementation DocumentFragment Document Node NodeList NamedNodeMap CharacterData Attr Element Text Comment CDATASection DocumentType Notation Entity EntityReference ProcessingInstruction
   syntax region javaScriptDoclet matchgroup=javaScriptComment start="/\*\*\n"  end="\*/" contains=javaScriptDocTag,javaScriptDocInlineTag,@javaScriptHtml,@Spell skipwhite skipnl
   syntax region javaScriptOneLinerDoclet matchgroup=javaScriptComment start="/\*\*\s"  end="\s\*/" contains=javaScriptDocTag,javaScriptDocInlineTag,@javaScriptHtml,@Spell skipwhite skipnl
   syntax match  javaScriptDocTag contained "@" nextgroup=javaScriptDocTypeParamDescTagNames,javaScriptDocTypeDescTagNames,javaScriptDocTypeTagNames,javaScriptDocDescTagNames,javaScriptDocMarkerTagNames,javaScriptDocSuppressTagNames,javaScriptDocAuthorTagNames
@@ -63,7 +62,7 @@ if !exists("javascript_ignore_javaScriptdoc")
   syntax keyword javaScriptDocAuthorTagNames          contained author nextgroup=javaScriptDocAuthorContent skipwhite skipnl
   syntax keyword javaScriptDocSuppressTagNames        contained suppress nextgroup=javaScriptDocSuppressFlag skipwhite skipnl
 
-  syntax match   javaScriptDocNameContent             contained "\%(\w\|_\|\$\)\(\%(\w\|\d\|_\|\$\|\.\)*\%(\w\|\d\|_\|\$\)\)\?" contains=@javaScriptDocObjects
+  syntax match   javaScriptDocNameContent             contained "\%(\w\|_\|\$\)\(\%(\w\|\d\|_\|\$\|\.\)*\%(\w\|\d\|_\|\$\)\)\?" contains=javaScriptDocPredefinedObjects
   syntax match   javaScriptDocTypeOperator            contained "\%(|\|=\|!\|?\|\*\)\+"
   syntax match   javaScriptDocInlineTagContent        contained "[^}]\+"
   
@@ -223,6 +222,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptCommentTodo          Todo
   HiLink javaScriptCvsTag               Function
 
+  HiLink javaScriptDoclet                   Comment
   HiLink javaScriptDocTag                   Special
   HiLink javaScriptDocInlineTag             Special
   HiLink javaScriptDocTypeParamDescTagNames Special
@@ -234,10 +234,11 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptDocAuthorTagNames        Special
   HiLink javaScriptDocSuppressTagNames      Special
   HiLink javaScriptDocSuppressFlagContent   Type
-  HiLink javaScriptDocNameContent           Function
-  HiLink javaScriptDocCurlyBrackets         Function
-  HiLink javaScriptDocGenerics              Operator
-  HiLink javaScriptDocTypeOperator          Operator
+  HiLink javaScriptDocPredefinedObjects     Function
+  HiLink javaScriptDocNameContent           Special
+  HiLink javaScriptDocCurlyBrackets         Special
+  HiLink javaScriptDocGenerics              Special
+  HiLink javaScriptDocTypeOperator          Special
   HiLink javaScriptDocTypeParamDescTagParam Normal
   HiLink javaScriptDocAuthorContent         Normal
   HiLink javaScriptDocDesc                  Comment
