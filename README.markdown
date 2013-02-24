@@ -9,6 +9,7 @@ The plugin support [Google Closure Compiler annotations](https://developers.goog
 Improvements:
  * Parameter name highlight
  * Primitive object highlight
+ * Inline tags highlight
  * Better one-liner doclet highlight
  * Support rich type expressions are: ```|```, ```?```, ```!```, ```=```
  * Support ActionScript3 style generics such as: ```Array.<string>```
