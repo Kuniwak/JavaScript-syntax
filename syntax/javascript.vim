@@ -224,7 +224,7 @@ if version >= 508 || !exists("did_javascript_syn_inits")
 
   HiLink javaScriptDoclet                   Comment
   HiLink javaScriptDocTag                   Special
-  HiLink javaScriptDocInlineTag             Special
+  HiLink javaScriptDocInlineTag             Statement
   HiLink javaScriptDocTypeParamDescTagNames Special
   HiLink javaScriptDocTypeDescTagNames      Special
   HiLink javaScriptDocTypeTagNames          Special
