@@ -81,7 +81,7 @@ if !exists("javascript_ignore_javaScriptdoc")
   syntax region  javaScriptDocSuppressFlag            contained matchgroup=javaScriptDocCurlyBrackets start="{" end="}" contains=javaScriptDocSuppressFlagContent
   syntax keyword javaScriptDocSuppressFlagContent     contained accessControls ambiguousFunctionDecl checkDebuggerStatement checkRegExp checkTypes checkVars const constantProperty deprecated duplicate es5Strict externsValidation fileoverviewTags globalThis internetExplorerChecks invalidCasts missingProperties nonStandardJsDocs strictModuleDepCheck suspiciousCode undefinedNames undefinedVars unknownDefines uselessCode visibility
 
-  syntax region javaScriptDocInlineTag                contained matchgroup=javaScriptDocCurlyBrackets start="{" end="}" contains=javaScriptDocInlineTagNames
+  syntax region javaScriptDocInlineTag                contained matchgroup=javaScriptDocInlineCurlyBrackets start="{@" end="}" contains=javaScriptDocInlineTagNames
   syntax case match
 endif   "" JSDoc end
 
@@ -152,7 +152,7 @@ if exists("javascript_enable_domhtmlcss")
     syntax keyword javaScriptCssStyles      contained bottom height left position right top width zIndex
     syntax keyword javaScriptCssStyles      contained border borderBottom borderLeft borderRight borderTop borderBottomColor borderLeftColor borderTopColor borderBottomStyle borderLeftStyle borderRightStyle borderTopStyle borderBottomWidth borderLeftWidth borderRightWidth borderTopWidth borderColor borderStyle borderWidth borderCollapse borderSpacing captionSide emptyCells tableLayout
     syntax keyword javaScriptCssStyles      contained margin marginBottom marginLeft marginRight marginTop outline outlineColor outlineStyle outlineWidth padding paddingBottom paddingLeft paddingRight paddingTop
-    syntax keyword javaScriptCssStyles      contained  @type {}listStyle listStyleImage listStylePosition listStyleType
+    syntax keyword javaScriptCssStyles      contained listStyle listStyleImage listStylePosition listStyleType
     syntax keyword javaScriptCssStyles      contained background backgroundAttachment backgroundColor backgroundImage gackgroundPosition backgroundPositionX backgroundPositionY backgroundRepeat
     syntax keyword javaScriptCssStyles      contained clear clip clipBottom clipLeft clipRight clipTop content counterIncrement counterReset cssFloat cursor direction display filter layoutGrid layoutGridChar layoutGridLine layoutGridMode layoutGridType
     syntax keyword javaScriptCssStyles      contained marks maxHeight maxWidth minHeight minWidth opacity MozOpacity overflow overflowX overflowY verticalAlign visibility zoom cssText
@@ -230,19 +230,20 @@ if version >= 508 || !exists("did_javascript_syn_inits")
   HiLink javaScriptDocTypeTagNames          Special
   HiLink javaScriptDocDescTagNames          Special
   HiLink javaScriptDocMarkerTagNames        Special
-  HiLink javaScriptDocInlineTagNames        Special
+  HiLink javaScriptDocInlineTagNames        Statement
   HiLink javaScriptDocAuthorTagNames        Special
   HiLink javaScriptDocSuppressTagNames      Special
   HiLink javaScriptDocSuppressFlagContent   Type
   HiLink javaScriptDocPredefinedObjects     Function
   HiLink javaScriptDocNameContent           Special
   HiLink javaScriptDocCurlyBrackets         Special
+  HiLink javaScriptDocInlineCurlyBrackets   Statement
   HiLink javaScriptDocGenerics              Special
   HiLink javaScriptDocTypeOperator          Special
   HiLink javaScriptDocTypeParamDescTagParam Normal
   HiLink javaScriptDocAuthorContent         Normal
   HiLink javaScriptDocDesc                  Comment
-  HiLink javaScriptDocInlineTagContent      Function
+  HiLink javaScriptDocInlineTagContent      Normal
   HiLink javaScriptDocType                  Error
   HiLink javaScriptDocSuppressFlag          Error
   HiLink javaScriptDocInvaliedDesc          Error
